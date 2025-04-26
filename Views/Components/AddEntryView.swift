@@ -1,8 +1,10 @@
+// AddEntryView.swift
 import SwiftUI
 
 struct AddEntryView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var store: WellbeingStore
+    @EnvironmentObject var healthData: HealthDataFetcher
     
     @State private var date = Date()
     @State private var mood = 5
@@ -15,6 +17,44 @@ struct AddEntryView: View {
                     DatePicker("", selection: $date, displayedComponents: .date)
                         .datePickerStyle(GraphicalDatePickerStyle())
                         .labelsHidden()
+                }
+                
+                Section(header: Text("Today's Health Data (Auto-collected)")) {
+                    HStack {
+                        Label("Steps", systemImage: "figure.walk")
+                        Spacer()
+                        Text("\(healthData.todaysData.steps)")
+                    }
+                    
+                    HStack {
+                        Label("Screen Time", systemImage: "iphone")
+                        Spacer()
+                        Text("\(healthData.todaysData.screenTimeMinutes) min")
+                    }
+                    
+                    HStack {
+                        Label("Sleep", systemImage: "bed.double")
+                        Spacer()
+                        Text("\(healthData.todaysData.sleepHours, specifier: "%.1f") hrs")
+                    }
+                    
+                    HStack {
+                        Label("Heart Rate", systemImage: "heart")
+                        Spacer()
+                        Text("\(healthData.todaysData.heartRate) bpm")
+                    }
+                    
+                    HStack {
+                        Label("Calories", systemImage: "flame")
+                        Spacer()
+                        Text("\(healthData.todaysData.caloriesBurned) kcal")
+                    }
+                    
+                    HStack {
+                        Label("Water", systemImage: "drop")
+                        Spacer()
+                        Text("\(healthData.todaysData.waterIntake) ml")
+                    }
                 }
                 
                 Section(header: Text("How was your day?")) {
@@ -79,6 +119,12 @@ struct AddEntryView: View {
                         let newEntry = WellbeingEntry(
                             date: date,
                             mood: mood,
+                            steps: healthData.todaysData.steps,
+                            screenTimeMinutes: healthData.todaysData.screenTimeMinutes,
+                            sleepHours: healthData.todaysData.sleepHours,
+                            heartRate: healthData.todaysData.heartRate,
+                            caloriesBurned: healthData.todaysData.caloriesBurned,
+                            waterIntake: healthData.todaysData.waterIntake,
                             dailyJournal: dailyJournal
                         )
                         store.addEntry(newEntry)

@@ -1,3 +1,4 @@
+// EditEntryView.swift
 import SwiftUI
 
 struct EditEntryView: View {
@@ -24,6 +25,44 @@ struct EditEntryView: View {
                     DatePicker("", selection: $date, displayedComponents: .date)
                         .datePickerStyle(GraphicalDatePickerStyle())
                         .labelsHidden()
+                }
+                
+                Section(header: Text("Health Data (Auto-collected)")) {
+                    HStack {
+                        Label("Steps", systemImage: "figure.walk")
+                        Spacer()
+                        Text("\(entry.steps)")
+                    }
+                    
+                    HStack {
+                        Label("Screen Time", systemImage: "iphone")
+                        Spacer()
+                        Text("\(entry.screenTimeMinutes) min")
+                    }
+                    
+                    HStack {
+                        Label("Sleep", systemImage: "bed.double")
+                        Spacer()
+                        Text("\(entry.sleepHours, specifier: "%.1f") hrs")
+                    }
+                    
+                    HStack {
+                        Label("Heart Rate", systemImage: "heart")
+                        Spacer()
+                        Text("\(entry.heartRate) bpm")
+                    }
+                    
+                    HStack {
+                        Label("Calories", systemImage: "flame")
+                        Spacer()
+                        Text("\(entry.caloriesBurned) kcal")
+                    }
+                    
+                    HStack {
+                        Label("Water", systemImage: "drop")
+                        Spacer()
+                        Text("\(entry.waterIntake) ml")
+                    }
                 }
                 
                 Section(header: Text("How was your day?")) {
@@ -77,6 +116,12 @@ struct EditEntryView: View {
                             id: entry.id,
                             date: date,
                             mood: mood,
+                            steps: entry.steps,
+                            screenTimeMinutes: entry.screenTimeMinutes,
+                            sleepHours: entry.sleepHours,
+                            heartRate: entry.heartRate,
+                            caloriesBurned: entry.caloriesBurned,
+                            waterIntake: entry.waterIntake,
                             dailyJournal: dailyJournal
                         )
                         store.updateEntry(updatedEntry)

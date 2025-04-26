@@ -1,3 +1,4 @@
+// EntryDetailView.swift
 import SwiftUI
 
 struct EntryDetailView: View {
@@ -22,6 +23,7 @@ struct EntryDetailView: View {
                 Divider()
                 
                 VStack(alignment: .leading, spacing: 20) {
+                    // Mood section
                     HStack {
                         Label("Mood", systemImage: "face.smiling")
                             .font(.headline)
@@ -37,6 +39,33 @@ struct EntryDetailView: View {
                             .cornerRadius(8)
                     }
                     
+                    // Health metrics section
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Health Data")
+                            .font(.headline)
+                        
+                        Grid(alignment: .leading, horizontalSpacing: 30, verticalSpacing: 15) {
+                            GridRow {
+                                Label("\(entry.steps) steps", systemImage: "figure.walk")
+                                Label("\(entry.heartRate) bpm", systemImage: "heart")
+                            }
+                            
+                            GridRow {
+                                Label("\(entry.screenTimeMinutes) min screen", systemImage: "iphone")
+                                Label("\(entry.caloriesBurned) kcal", systemImage: "flame")
+                            }
+                            
+                            GridRow {
+                                Label("\(entry.sleepHours, specifier: "%.1f") hrs sleep", systemImage: "bed.double")
+                                Label("\(entry.waterIntake) ml water", systemImage: "drop")
+                            }
+                        }
+                        .padding()
+                        .background(Color(.systemGray5))
+                        .cornerRadius(8)
+                    }
+                    
+                    // Journal section
                     VStack(alignment: .leading, spacing: 10) {
                         Label("Journal Entry", systemImage: "book")
                             .font(.headline)
@@ -75,6 +104,40 @@ struct EntryDetailView: View {
             return .green
         default:
             return .gray
+        }
+    }
+}
+
+struct Grid<Content: View>: View {
+    let alignment: HorizontalAlignment
+    let horizontalSpacing: CGFloat
+    let verticalSpacing: CGFloat
+    let content: Content
+    
+    init(alignment: HorizontalAlignment = .center, horizontalSpacing: CGFloat = 8, verticalSpacing: CGFloat = 8, @ViewBuilder content: () -> Content) {
+        self.alignment = alignment
+        self.horizontalSpacing = horizontalSpacing
+        self.verticalSpacing = verticalSpacing
+        self.content = content()
+    }
+    
+    var body: some View {
+        VStack(alignment: alignment, spacing: verticalSpacing) {
+            content
+        }
+    }
+}
+
+struct GridRow<Content: View>: View {
+    let content: Content
+    
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+    
+    var body: some View {
+        HStack(spacing: 8) {
+            content
         }
     }
 }

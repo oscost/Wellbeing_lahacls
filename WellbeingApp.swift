@@ -6,6 +6,7 @@ struct WellbeingApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(WellbeingStore())
+                .environmentObject(HealthDataFetcher())
         }
     }
 }

@@ -15,6 +15,7 @@
 		D57AC7C12DBDA2ED000D7A24 /* EntryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57AC7C02DBDA2ED000D7A24 /* EntryDetailView.swift */; };
 		D57AC7C32DBDA2EE000D7A24 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57AC7C22DBDA2EE000D7A24 /* AddEntryView.swift */; };
 		D57AC7C52DBDA2EF000D7A24 /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57AC7C42DBDA2EF000D7A24 /* EditEntryView.swift */; };
+		D57AC7C92DBDA828000D7A24 /* HealthDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57AC7C82DBDA828000D7A24 /* HealthDataFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		D57AC7C02DBDA2ED000D7A24 /* EntryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailView.swift; sourceTree = "<group>"; };
 		D57AC7C22DBDA2EE000D7A24 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
 		D57AC7C42DBDA2EF000D7A24 /* EditEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntryView.swift; sourceTree = "<group>"; };
+		D57AC7C82DBDA828000D7A24 /* HealthDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				D57AC7B92DBDA2BA000D7A24 /* WellbeingStore.swift */,
+				D57AC7C82DBDA828000D7A24 /* HealthDataFetcher.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			files = (
 				D57AC7C52DBDA2EF000D7A24 /* EditEntryView.swift in Sources */,
 				D57AC7BF2DBDA2E7000D7A24 /* EntryRowView.swift in Sources */,
+				D57AC7C92DBDA828000D7A24 /* HealthDataFetcher.swift in Sources */,
 				D57AC7BA2DBDA2BA000D7A24 /* WellbeingStore.swift in Sources */,
 				D57AC7C12DBDA2ED000D7A24 /* EntryDetailView.swift in Sources */,
 				D57AC7B62DBDA28F000D7A24 /* WellbeingApp.swift in Sources */,
