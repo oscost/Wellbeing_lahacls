@@ -1,0 +1,555 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		D57AC78E2DBD9FBA000D7A24 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D57AC7732DBD9FB8000D7A24 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D57AC77A2DBD9FB8000D7A24;
+			remoteInfo = Wellbeing_lahacls;
+		};
+		D57AC7982DBD9FBA000D7A24 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D57AC7732DBD9FB8000D7A24 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D57AC77A2DBD9FB8000D7A24;
+			remoteInfo = Wellbeing_lahacls;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D57AC77B2DBD9FB8000D7A24 /* Wellbeing_lahacls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wellbeing_lahacls.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D57AC78D2DBD9FBA000D7A24 /* Wellbeing_lahaclsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Wellbeing_lahaclsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D57AC7972DBD9FBA000D7A24 /* Wellbeing_lahaclsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Wellbeing_lahaclsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D57AC77D2DBD9FB8000D7A24 /* Wellbeing_lahacls */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Wellbeing_lahacls;
+			sourceTree = "<group>";
+		};
+		D57AC7902DBD9FBA000D7A24 /* Wellbeing_lahaclsTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Wellbeing_lahaclsTests;
+			sourceTree = "<group>";
+		};
+		D57AC79A2DBD9FBA000D7A24 /* Wellbeing_lahaclsUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Wellbeing_lahaclsUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D57AC7782DBD9FB8000D7A24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D57AC78A2DBD9FBA000D7A24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D57AC7942DBD9FBA000D7A24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D57AC7722DBD9FB8000D7A24 = {
+			isa = PBXGroup;
+			children = (
+				D57AC77D2DBD9FB8000D7A24 /* Wellbeing_lahacls */,
+				D57AC7902DBD9FBA000D7A24 /* Wellbeing_lahaclsTests */,
+				D57AC79A2DBD9FBA000D7A24 /* Wellbeing_lahaclsUITests */,
+				D57AC77C2DBD9FB8000D7A24 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D57AC77C2DBD9FB8000D7A24 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D57AC77B2DBD9FB8000D7A24 /* Wellbeing_lahacls.app */,
+				D57AC78D2DBD9FBA000D7A24 /* Wellbeing_lahaclsTests.xctest */,
+				D57AC7972DBD9FBA000D7A24 /* Wellbeing_lahaclsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D57AC77A2DBD9FB8000D7A24 /* Wellbeing_lahacls */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D57AC7A12DBD9FBA000D7A24 /* Build configuration list for PBXNativeTarget "Wellbeing_lahacls" */;
+			buildPhases = (
+				D57AC7772DBD9FB8000D7A24 /* Sources */,
+				D57AC7782DBD9FB8000D7A24 /* Frameworks */,
+				D57AC7792DBD9FB8000D7A24 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D57AC77D2DBD9FB8000D7A24 /* Wellbeing_lahacls */,
+			);
+			name = Wellbeing_lahacls;
+			packageProductDependencies = (
+			);
+			productName = Wellbeing_lahacls;
+			productReference = D57AC77B2DBD9FB8000D7A24 /* Wellbeing_lahacls.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D57AC78C2DBD9FBA000D7A24 /* Wellbeing_lahaclsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D57AC7A42DBD9FBA000D7A24 /* Build configuration list for PBXNativeTarget "Wellbeing_lahaclsTests" */;
+			buildPhases = (
+				D57AC7892DBD9FBA000D7A24 /* Sources */,
+				D57AC78A2DBD9FBA000D7A24 /* Frameworks */,
+				D57AC78B2DBD9FBA000D7A24 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D57AC78F2DBD9FBA000D7A24 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D57AC7902DBD9FBA000D7A24 /* Wellbeing_lahaclsTests */,
+			);
+			name = Wellbeing_lahaclsTests;
+			packageProductDependencies = (
+			);
+			productName = Wellbeing_lahaclsTests;
+			productReference = D57AC78D2DBD9FBA000D7A24 /* Wellbeing_lahaclsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D57AC7962DBD9FBA000D7A24 /* Wellbeing_lahaclsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D57AC7A72DBD9FBA000D7A24 /* Build configuration list for PBXNativeTarget "Wellbeing_lahaclsUITests" */;
+			buildPhases = (
+				D57AC7932DBD9FBA000D7A24 /* Sources */,
+				D57AC7942DBD9FBA000D7A24 /* Frameworks */,
+				D57AC7952DBD9FBA000D7A24 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D57AC7992DBD9FBA000D7A24 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D57AC79A2DBD9FBA000D7A24 /* Wellbeing_lahaclsUITests */,
+			);
+			name = Wellbeing_lahaclsUITests;
+			packageProductDependencies = (
+			);
+			productName = Wellbeing_lahaclsUITests;
+			productReference = D57AC7972DBD9FBA000D7A24 /* Wellbeing_lahaclsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D57AC7732DBD9FB8000D7A24 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1630;
+				LastUpgradeCheck = 1630;
+				TargetAttributes = {
+					D57AC77A2DBD9FB8000D7A24 = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					D57AC78C2DBD9FBA000D7A24 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = D57AC77A2DBD9FB8000D7A24;
+					};
+					D57AC7962DBD9FBA000D7A24 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = D57AC77A2DBD9FB8000D7A24;
+					};
+				};
+			};
+			buildConfigurationList = D57AC7762DBD9FB8000D7A24 /* Build configuration list for PBXProject "Wellbeing_lahacls" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D57AC7722DBD9FB8000D7A24;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = D57AC77C2DBD9FB8000D7A24 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D57AC77A2DBD9FB8000D7A24 /* Wellbeing_lahacls */,
+				D57AC78C2DBD9FBA000D7A24 /* Wellbeing_lahaclsTests */,
+				D57AC7962DBD9FBA000D7A24 /* Wellbeing_lahaclsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D57AC7792DBD9FB8000D7A24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D57AC78B2DBD9FBA000D7A24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D57AC7952DBD9FBA000D7A24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D57AC7772DBD9FB8000D7A24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D57AC7892DBD9FBA000D7A24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D57AC7932DBD9FBA000D7A24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D57AC78F2DBD9FBA000D7A24 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D57AC77A2DBD9FB8000D7A24 /* Wellbeing_lahacls */;
+			targetProxy = D57AC78E2DBD9FBA000D7A24 /* PBXContainerItemProxy */;
+		};
+		D57AC7992DBD9FBA000D7A24 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D57AC77A2DBD9FB8000D7A24 /* Wellbeing_lahacls */;
+			targetProxy = D57AC7982DBD9FBA000D7A24 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D57AC79F2DBD9FBA000D7A24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D57AC7A02DBD9FBA000D7A24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D57AC7A22DBD9FBA000D7A24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "UCLA.Wellbeing-lahacls";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D57AC7A32DBD9FBA000D7A24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "UCLA.Wellbeing-lahacls";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D57AC7A52DBD9FBA000D7A24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "UCLA.Wellbeing-lahaclsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wellbeing_lahacls.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Wellbeing_lahacls";
+			};
+			name = Debug;
+		};
+		D57AC7A62DBD9FBA000D7A24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "UCLA.Wellbeing-lahaclsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wellbeing_lahacls.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Wellbeing_lahacls";
+			};
+			name = Release;
+		};
+		D57AC7A82DBD9FBA000D7A24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "UCLA.Wellbeing-lahaclsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Wellbeing_lahacls;
+			};
+			name = Debug;
+		};
+		D57AC7A92DBD9FBA000D7A24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "UCLA.Wellbeing-lahaclsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Wellbeing_lahacls;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D57AC7762DBD9FB8000D7A24 /* Build configuration list for PBXProject "Wellbeing_lahacls" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D57AC79F2DBD9FBA000D7A24 /* Debug */,
+				D57AC7A02DBD9FBA000D7A24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D57AC7A12DBD9FBA000D7A24 /* Build configuration list for PBXNativeTarget "Wellbeing_lahacls" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D57AC7A22DBD9FBA000D7A24 /* Debug */,
+				D57AC7A32DBD9FBA000D7A24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D57AC7A42DBD9FBA000D7A24 /* Build configuration list for PBXNativeTarget "Wellbeing_lahaclsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D57AC7A52DBD9FBA000D7A24 /* Debug */,
+				D57AC7A62DBD9FBA000D7A24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D57AC7A72DBD9FBA000D7A24 /* Build configuration list for PBXNativeTarget "Wellbeing_lahaclsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D57AC7A82DBD9FBA000D7A24 /* Debug */,
+				D57AC7A92DBD9FBA000D7A24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D57AC7732DBD9FB8000D7A24 /* Project object */;
+}
