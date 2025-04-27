@@ -1,19 +1,18 @@
-// WellbeingAppWithFetchAi.swift
 import SwiftUI
 
 @main
-struct WellbeingAppWithFetchAi: App {
+struct WellbeingApp: App {
     var body: some Scene {
         WindowGroup {
-            MainTabViewWithFetchAi()
+            MainTabView()
                 .environmentObject(WellbeingStore())
                 .environmentObject(HealthDataFetcher())
         }
     }
 }
 
-struct MainTabViewWithFetchAi: View {
-    @State private var selectedTab = 2 // Start with FetchAi Stressors tab
+struct MainTabView: View {
+    @State private var selectedTab = 2 // Start with Stressors tab
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -29,9 +28,9 @@ struct MainTabViewWithFetchAi: View {
                 }
                 .tag(1)
             
-            FetchAiStressorsView()
+            StressorsView()
                 .tabItem {
-                    Label("AI Insights", systemImage: "brain.head.profile")
+                    Label("Stressors", systemImage: "brain.head.profile")
                 }
                 .tag(2)
         }

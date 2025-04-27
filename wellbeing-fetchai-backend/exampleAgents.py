@@ -31,7 +31,7 @@ from sklearn.cluster import KMeans
 from collections import Counter
 
 # Import fetch.ai's uAgents framework
-from uagents import Agent, Context, Model, Protocol
+from uagents import Agent, Context, Model, Protocol, Bureau
 
 # Define message models for communication between agents
 class HealthData(Model):
@@ -64,42 +64,39 @@ class AnalysisComplete(Model):
     """Notification that analysis is complete"""
     user_id: str
     status: str
-    result: Dict[str, Any]
     
-class StartAnalysisRequest(Model):
-    """Request to start the health analytics process"""
-    user_id: str
-    time_period: int
-
-# In app.py, modify agent definitions:
-
+# Create agents with proper configuration for server endpoints
 data_collection_agent = Agent(
     name="data_collection_agent",
     seed="data_collection_seed_phrase",
     port=8000,
-    endpoint=["http://localhost:8000/submit"]  # Changed from 0.0.0.0
+    endpoint=["http://0.0.0.0:8000/submit"]
 )
 
 pattern_analysis_agent = Agent(
     name="pattern_analysis_agent",
     seed="pattern_analysis_seed_phrase",
     port=8001,
-    endpoint=["http://localhost:8001/submit"]  # Changed
+    endpoint=["http://0.0.0.0:8001/submit"]
 )
 
 recommendation_agent = Agent(
     name="recommendation_agent",
     seed="recommendation_seed_phrase",
     port=8002,
-    endpoint=["http://localhost:8002/submit"]  # Changed
+    endpoint=["http://0.0.0.0:8002/submit"]
 )
 
+# Client agent to orchestrate the analysis process
 client_agent = Agent(
     name="client_agent",
     seed="client_agent_seed",
     port=8003,
-    endpoint=["http://localhost:8003/submit"]  # Changed
+    endpoint=["http://0.0.0.0:8003/submit"]
 )
+
+# Create protocols for agent communication
+health_analysis_protocol = Protocol("health_analysis")
 
 # Helper functions for data generation and analysis
 def generate_mock_health_data(user_id: str, days: int) -> List[Dict]:
@@ -533,9 +530,9 @@ def generate_recommendations(stressors: List[Dict]) -> List[Dict]:
 # Setup the Data Collection Agent
 @data_collection_agent.on_event("startup")
 async def data_collection_startup(ctx: Context):
-    
     """Initialize the agent"""
     ctx.logger.info(f"Data Collection Agent started with address: {data_collection_agent.address}")
+    await ctx.storage.set("initialized", "true")
 
 @data_collection_agent.on_message(model=AnalysisRequest)
 async def handle_analysis_request(ctx: Context, sender: str, msg: AnalysisRequest):
@@ -544,6 +541,9 @@ async def handle_analysis_request(ctx: Context, sender: str, msg: AnalysisReques
     
     # Generate or fetch real data
     health_data = generate_mock_health_data(msg.user_id, msg.time_period)
+    
+    # Store the data
+    await ctx.storage.set(f"health_data_{msg.user_id}", json.dumps(health_data))
     
     # Send the data to the pattern analysis agent
     await ctx.send(
@@ -556,9 +556,9 @@ async def handle_analysis_request(ctx: Context, sender: str, msg: AnalysisReques
 # Setup the Pattern Analysis Agent
 @pattern_analysis_agent.on_event("startup")
 async def pattern_analysis_startup(ctx: Context):
-    ctx.logger.setLevel("DEBUG")
     """Initialize the agent"""
     ctx.logger.info(f"Pattern Analysis Agent started with address: {pattern_analysis_agent.address}")
+    await ctx.storage.set("initialized", "true")
 
 @pattern_analysis_agent.on_message(model=HealthData)
 async def analyze_patterns(ctx: Context, sender: str, msg: HealthData):
@@ -578,17 +578,18 @@ async def analyze_patterns(ctx: Context, sender: str, msg: HealthData):
     # Identify stressors
     stressors = identify_stressors(df, patterns)
     
+    # Store the results
+    analysis_result = {
+        'patterns': patterns,
+        'stressors': stressors
+    }
+    await ctx.storage.set(f"analysis_result_{msg.user_id}", json.dumps(analysis_result))
+    
     # Send stressors to recommendation agent
     await ctx.send(
         recommendation_agent.address,
         RecommendationRequest(user_id=msg.user_id, stressors=stressors)
     )
-    
-    # Store patterns and stressors for potential future reference
-    await ctx.storage.set(f"analysis_result_{msg.user_id}", json.dumps({
-        'patterns': patterns,
-        'stressors': stressors
-    }))
     
     ctx.logger.info(f"Completed pattern analysis for user {msg.user_id} and sent to recommendation agent")
 
@@ -596,8 +597,8 @@ async def analyze_patterns(ctx: Context, sender: str, msg: HealthData):
 @recommendation_agent.on_event("startup")
 async def recommendation_startup(ctx: Context):
     """Initialize the agent"""
-    ctx.logger.setLevel("DEBUG")
     ctx.logger.info(f"Recommendation Agent started with address: {recommendation_agent.address}")
+    await ctx.storage.set("initialized", "true")
 
 @recommendation_agent.on_message(model=RecommendationRequest)
 async def generate_recommendations_handler(ctx: Context, sender: str, msg: RecommendationRequest):
@@ -607,36 +608,13 @@ async def generate_recommendations_handler(ctx: Context, sender: str, msg: Recom
     # Generate recommendations
     recommendations = generate_recommendations(msg.stressors)
     
-    # Get patterns from storage
-    pattern_analysis_json = await ctx.storage.get(f"analysis_result_{msg.user_id}")
-    if pattern_analysis_json:
-        pattern_analysis_result = json.loads(pattern_analysis_json)
-    else:
-        pattern_analysis_result = {
-            'patterns': [],
-            'stressors': msg.stressors
-        }
-    
-    # Create final result with all components
-    full_result = {
-        'user_id': msg.user_id,
-        'analysis_date': datetime.now().strftime("%Y-%m-%d"),
-        'patterns': pattern_analysis_result.get('patterns', []),
-        'stressors': pattern_analysis_result.get('stressors', []),
-        'recommendations': recommendations
-    }
-    
     # Store the recommendations
     await ctx.storage.set(f"recommendations_{msg.user_id}", json.dumps(recommendations))
     
-    # Send completion notification with full result to client agent
+    # Send completion notification
     await ctx.send(
         client_agent.address,  
-        AnalysisComplete(
-            user_id=msg.user_id, 
-            status="completed",
-            result=full_result
-        )
+        AnalysisComplete(user_id=msg.user_id, status="completed")
     )
     
     ctx.logger.info(f"Generated {len(recommendations)} recommendations for user {msg.user_id}")
@@ -645,52 +623,166 @@ async def generate_recommendations_handler(ctx: Context, sender: str, msg: Recom
 @client_agent.on_event("startup")
 async def client_startup(ctx: Context):
     """Initialize the client agent"""
-    ctx.logger.setLevel("DEBUG")
     ctx.logger.info(f"Client Agent started with address: {client_agent.address}")
-    # Initialize a pending analysis immediately
-    user_id = "user123"
-    days = 30
-    
-    # Give the system a moment to start up
-    await asyncio.sleep(10)
-    
-    # Start the analysis
-    ctx.logger.info(f"Auto-starting analysis for user: {user_id}")
-    await ctx.send(
-        data_collection_agent.address,
-        AnalysisRequest(user_id=user_id, time_period=days)
-    )
-    
-    ctx.logger.info(f"Sent analysis request for user {user_id} to data collection agent")
+    await ctx.storage.set("initialized", "true")
 
 @client_agent.on_message(model=AnalysisComplete)
 async def handle_analysis_complete(ctx: Context, sender: str, msg: AnalysisComplete):
     """Handle notification that analysis is complete"""
     ctx.logger.info(f"Analysis completed for user: {msg.user_id}")
     
-    # Store the full result for retrieval
-    await ctx.storage.set(f"analysis_results_{msg.user_id}", json.dumps(msg.result))
+    # Retrieve pattern analysis results
+    pattern_analysis_json = await pattern_analysis_agent.storage.get(f"analysis_result_{msg.user_id}")
+    if pattern_analysis_json:
+        pattern_analysis_result = json.loads(pattern_analysis_json)
+    else:
+        pattern_analysis_result = {"patterns": [], "stressors": []}
+    
+    # Retrieve recommendations
+    recommendations_json = await recommendation_agent.storage.get(f"recommendations_{msg.user_id}")
+    if recommendations_json:
+        recommendations_result = json.loads(recommendations_json)
+    else:
+        recommendations_result = []
+    
+    # Combine results
+    full_result = {
+        'user_id': msg.user_id,
+        'analysis_date': datetime.now().strftime("%Y-%m-%d"),
+        'patterns': pattern_analysis_result.get('patterns', []),
+        'stressors': pattern_analysis_result.get('stressors', []),
+        'recommendations': recommendations_result
+    }
+    
+    # Store the result for retrieval
+    await ctx.storage.set(f"analysis_results_{msg.user_id}", json.dumps(full_result))
+    
+    ctx.logger.info(f"Retrieved and stored full analysis for user {msg.user_id}")
+
+# Function to start the analysis process
+async def start_analysis(user_id: str, days: int = 30) -> Dict:
+    """Start the health data analysis process for a user"""
+    try:
+        # We need a context to send messages, which we don't have outside handlers
+        # Instead, we'll use a direct approach with a manually created analysis result
+        
+        # Generate mock data directly
+        health_data = generate_mock_health_data(user_id, days)
+        
+        # Process directly without agent communication
+        df = pd.DataFrame(health_data)
+        
+        # Extract activity data
+        for activity in health_data[0]['activities'].keys():
+            df[f'activity_{activity}'] = df['activities'].apply(lambda x: x.get(activity, 0))
+        
+        # Analyze patterns
+        patterns = identify_patterns(df)
+        
+        # Identify stressors
+        stressors = identify_stressors(df, patterns)
+        
+        # Generate recommendations
+        recommendations = generate_recommendations(stressors)
+        
+        # Create result
+        result = {
+            'user_id': user_id,
+            'analysis_date': datetime.now().strftime("%Y-%m-%d"),
+            'patterns': patterns,
+            'stressors': stressors,
+            'recommendations': recommendations
+        }
+        
+        return result
+    except Exception as e:
+        print(f"Error in start_analysis: {e}")
+        return {
+            'user_id': user_id,
+            'error': f'Error during analysis: {str(e)}',
+            'analysis_date': datetime.now().strftime("%Y-%m-%d")
+        }
+
+# Create a Bureau to manage all agents
+bureau = Bureau()
+bureau.add(client_agent)
+bureau.add(data_collection_agent)
+bureau.add(pattern_analysis_agent) 
+bureau.add(recommendation_agent)
+
+# Main function to run the system
+# Main function to run the system
+async def main():
+    """Run the health analytics system"""
+
+    # Start all agents individually rather than using Bureau.run()
+    tasks = []
+    tasks.append(asyncio.create_task(client_agent.run_async()))
+    tasks.append(asyncio.create_task(data_collection_agent.run_async()))
+    tasks.append(asyncio.create_task(pattern_analysis_agent.run_async()))
+    tasks.append(asyncio.create_task(recommendation_agent.run_async()))
+    
+    # Give agents time to start up
+    await asyncio.sleep(5)
+    
+    # Start the analysis process
+    result = await start_analysis("user123", 30)
     
     # Print results
     print("\n--- HEALTH ANALYTICS REPORT ---")
-    print(f"User: {msg.result['user_id']}")
-    print(f"Analysis Date: {msg.result['analysis_date']}")
+    print(f"User: {result['user_id']}")
+    print(f"Analysis Date: {result['analysis_date']}")
     
-    print("\n--- KEY PATTERNS IDENTIFIED ---")
-    for pattern in msg.result['patterns']:
-        print(f"- {pattern['description']}")
+    if 'error' in result:
+        print(f"\nError: {result['error']}")
+    else:
+        print("\n--- KEY PATTERNS IDENTIFIED ---")
+        if 'patterns' in result:
+            for pattern in result['patterns']:
+                print(f"- {pattern['description']}")
+        else:
+            print("No patterns identified or analysis failed")
+        
+        print("\n--- PRIMARY STRESSORS ---")
+        if 'stressors' in result:
+            for stressor in result['stressors']:
+                print(f"- {stressor['description']}")
+        else:
+            print("No stressors identified or analysis failed")
+        
+        print("\n--- PERSONALIZED RECOMMENDATIONS ---")
+        if 'recommendations' in result:
+            for rec in result['recommendations']:
+                print(f"- {rec['recommendation']}")
+                print(f"  Evidence: {rec['evidence']}")
+                print(f"  Potential Impact: {rec['impact']}")
+                print()
+        else:
+            print("No recommendations generated or analysis failed")
     
-    print("\n--- PRIMARY STRESSORS ---")
-    for stressor in msg.result['stressors']:
-        print(f"- {stressor['description']}")
+    # Improved shutdown with proper error handling
+    for task in tasks:
+        task.cancel()
+        try:
+            # Allow each task a short time to close gracefully
+            await asyncio.wait_for(asyncio.shield(task), timeout=0.5)
+        except asyncio.TimeoutError:
+            # Task didn't finish in time, but we're shutting down anyway
+            pass
+        except asyncio.CancelledError:
+            # Task was cancelled successfully
+            pass
+        except Exception as e:
+            # Log any other errors but continue shutdown
+            print(f"Warning during task cancellation: {e}")
     
-    print("\n--- PERSONALIZED RECOMMENDATIONS ---")
-    for rec in msg.result['recommendations']:
-        print(f"- {rec['recommendation']}")
-        print(f"  Evidence: {rec['evidence']}")
-        print(f"  Potential Impact: {rec['impact']}")
-        print()
-    
-    ctx.logger.info(f"Printed analysis results for user {msg.user_id}")
-    
-    print("\nAnalysis complete! You can press Ctrl+C to exit.")
+    # # Ensure we cleanup any pending tasks
+    # remaining_tasks = [t for t in asyncio.all_tasks() if t is not asyncio.current_task()]
+    # if remaining_tasks:
+    #     print(f"Cleaning up {len(remaining_tasks)} remaining tasks...")
+    #     # Give remaining tasks a final chance to complete
+    #     await asyncio.gather(*remaining_tasks, return_exceptions=True)
+
+# Run the main function
+if __name__ == "__main__":
+    asyncio.run(main())

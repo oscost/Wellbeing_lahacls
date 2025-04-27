@@ -33,4 +33,3 @@ struct HealthMetrics {
     var caloriesBurned: Int = 0
     var waterIntake: Int = 0
 }
-

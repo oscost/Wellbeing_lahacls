@@ -36,7 +36,7 @@ struct AddEntryView: View {
                                 .font(.headline)
                                 .padding(.bottom, 5)
                             
-                            VStack(alignment: .leading, spacing: 8) {
+                            VStack(alignment: .leading, spacing: 8)  {
                                 HealthDataRow(icon: "figure.walk", label: "Steps", value: "\(healthData.todaysData.steps)")
                                 HealthDataRow(icon: "iphone", label: "Screen Time", value: "\(healthData.todaysData.screenTimeMinutes) min")
                                 HealthDataRow(icon: "bed.double", label: "Sleep", value: String(format: "%.1f hrs", healthData.todaysData.sleepHours))
@@ -97,7 +97,7 @@ struct AddEntryView: View {
                                         .bold()
                                     
                                     HStack {
-                                        Text("🪫")
+                                        Text("🔋")
                                             .font(.title2)
                                         
                                         Slider(value: Binding(
@@ -105,7 +105,7 @@ struct AddEntryView: View {
                                             set: { energy = Int($0) }
                                         ), in: 1...10, step: 1)
                                         
-                                        Text("🔋")
+                                        Text("⚡")
                                             .font(.title2)
                                     }
                                     
