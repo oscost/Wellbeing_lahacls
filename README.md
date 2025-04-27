@@ -1,152 +1,88 @@
-# Health Analytics System using fetch.ai uAgents
+# Mood Mentor: Intelligent Health Analytics with fetch.ai uAgents
 
-This system uses fetch.ai's uAgents framework to create a personalized health analytics platform that:
-1. Collects and analyzes comprehensive health data
-2. Identifies patterns and correlations between activities and health outcomes
-3. Detects personal stressors affecting wellbeing
-4. Provides personalized, evidence-based recommendations
+![tag:innovationlab](https://img.shields.io/badge/innovationlab-3D8BD3)
+![tag:domain/health](https://img.shields.io/badge/domain-health-2FC14E)
+![tag:wellbeing](https://img.shields.io/badge/wellbeing-FF6B6B)
 
-## Architecture
+**Description**: This AI system collects and analyzes personal health data from various sources to identify patterns, detect stressors, and provide personalized recommendations for improving mental and physical wellbeing. It processes data from wearables, screen time tracking, and journal entries to deliver actionable insights.
 
-The system is built using a multi-agent architecture with four specialized autonomous agents:
+## Inspiration
+In today's hyper-connected world, we're constantly bombarded with digital notifications, work pressures, and lifestyle challenges that affect our wellbeing. Despite having more health data than ever before through wearables and apps, most of us lack the tools to make sense of this information and identify what's truly impacting our mental and physical health.
 
-1. **Data Collection Agent** - Integrates and standardizes inputs from various sources:
-   - Wearable device data (heart rate, steps, sleep)
-   - Screen time tracking applications
-   - Journal entries for activities and emotional state
-   - User-provided ratings for energy and mood
+Our team recognized this gap and asked: What if we could create an intelligent system that not only collects this scattered health data but actually analyzes it to identify personal stressors and provide actionable, evidence-based recommendations?
 
-2. **Pattern Analysis Agent** - Processes the data to uncover patterns:
-   - Time-series analysis to identify correlations
+## What it does
+Mood Mentor is a comprehensive health analytics platform built on fetch.ai's uAgents framework that transforms raw health data into personalized wellbeing insights. Our system:
+
+1. **Collects and normalizes diverse health data** from wearables, screen time trackers, and personal journals
+2. **Identifies patterns and correlations** between daily activities and health outcomes
+3. **Detects personal stressors** affecting your wellbeing using advanced pattern analysis
+4. **Generates personalized, evidence-based recommendations** to improve your mental and physical health
+
+The platform presents this information through an intuitive mobile interface that shows current stressors with severity levels, allows for daily journaling of activities and emotions, and tracks key health metrics over time.
+
+## How we built it
+We architected Mood Mentor using a multi-agent system powered by fetch.ai's uAgents framework. Our system consists of four specialized autonomous agents:
+
+1. **DataCollectionAgent**: Collects and preprocesses health and activity data from various sources, normalizing it for analysis.
+
+2. **PatternAnalysisAgent**: Identifies correlations and patterns in the data using several techniques:
+   - Time-series analysis to detect relationships between variables
    - Threshold detection to find critical trigger points
    - Clustering to determine "good day" vs "bad day" patterns
-   - NLP processing of journal entries to extract sentiment and topics
-   - Detection of lag effects (e.g., impact of activities on next-day metrics)
+   - Analysis of journal entries to extract sentiment and topics
 
-3. **Recommendation Agent** - Provides personalized suggestions:
-   - Matches identified stressors with evidence-based interventions
-   - Prioritizes recommendations based on correlation strength
-   - Generates specific, actionable, personalized suggestions
+3. **RecommendationAgent**: Analyzes identified stressors and generates personalized recommendations based on evidence-backed interventions.
 
-4. **Client Agent** - Orchestrates the workflow and communication:
-   - Initiates the analysis process
-   - Collects results from the other agents
-   - Provides the unified analysis to the user
+4. **ClientAgent**: Orchestrates the workflow between the other agents and provides the unified analysis to the user interface.
 
-## Requirements
+The frontend was built as a mobile-first web application that communicates with our agent system to display personalized insights and collect user inputs.
 
-- Python 3.10 or higher
-- fetch.ai's uAgents package
-- pandas for data processing
-- scikit-learn for pattern analysis
-- matplotlib for visualization (optional)
+## Challenges we ran into
+Building Mood Mentor presented several significant challenges:
 
-## Installation
+1. **Data integration complexity**: Consolidating and normalizing data from diverse sources with different formats required sophisticated preprocessing.
 
-```bash
-pip install uagents pandas scikit-learn matplotlib
-```
+2. **Pattern detection accuracy**: Identifying meaningful patterns while avoiding false correlations demanded careful statistical approaches.
 
-## Usage
+3. **Balancing privacy and insights**: Designing a system that protects sensitive health data while providing valuable analysis was a key consideration. Thus, fetch was an obvious choice given it's focus on security through the blockchain.
 
-1. **Run the agents:**
+5. **Recommendation relevance**: Generating recommendations that are truly personalized and actionable rather than generic health advice required sophisticated matching algorithms.
 
-```python
-import asyncio
-from health_analytics import main
+## Accomplishments that we're proud of
+Despite these challenges, we're proud to have built:
 
-# Run the main function which starts all agents and performs analysis
-if __name__ == "__main__":
-    asyncio.run(main())
-```
+1. A very unique idea that we can see being widely used and an actionable plan to finish up everything not yet completed.
 
-2. **Customize for your own data:**
+2. Advanced pattern detection algorithms that can identify subtle relationships between daily activities and wellbeing outcomes.
 
-Modify the `generate_mock_health_data` function to connect with your real data sources. In a production environment, you would replace this with API calls to your existing data collection systems.
+3. A system that transforms raw health data into actionable insights without requiring users to be data scientists themselves.
 
-## How It Works with fetch.ai
+4. A clean, intuitive user interface that makes complex health analytics accessible and useful.
 
-The system leverages fetch.ai's uAgents framework to create autonomous agents that can:
+## What we learned
+Throughout this hackathon, our team gained valuable insights into:
 
-1. **Communicate securely** - Agents use the fetch.ai messaging protocol to exchange data.
-2. **Store data** - Each agent maintains its own storage for relevant data.
-3. **Execute on schedule** - Agents can perform tasks on intervals or in response to messages.
-4. **Operate autonomously** - Each agent has its specific role and can work independently.
-5. **Scale across devices** - In a production deployment, agents can run on different devices or servers.
+- The practical applications of fetch.ai's uAgents for creating sophisticated autonomous systems
+- Approaches for identifying meaningful patterns in noisy, real-world health data
+- Effective techniques for agent communication and coordination
+- The importance of human-centered design when presenting complex health analytics
 
-The fetch.ai uAgents are defined with their own addresses which allows them to be discovered and communicate in a secure, decentralized manner.
+## What's next for Mood Mentor
+Our current implementation demonstrates the core functionality of our vision, but we have ambitious plans for the future:
 
-## Example Output
+1. **Integration with fetch.ai's LLM**: The end goal is to leverage fetch.ai's language model to generate even more sophisticated and personalized recommendations based on identified stressors.
 
-The system produces a comprehensive analysis with three main components:
+2. **Advanced intervention tracking**: Building feedback loops to measure the effectiveness of recommendations and refine them over time.
 
-### 1. Identified Patterns
+3. **Community insights**: Creating anonymized, opt-in aggregated insights that help users understand how their stressors and effective interventions compare to similar individuals.
 
-```
-- Sleep quality is 1.2 points lower after days with >3 hours of screen time
-- Mood is 1.8 points higher on days with >8000 steps
-- Screen time productivity appears to negatively impact energy level the next day
-```
+4. **Complete frontend integration**: Fully connecting our backend agent system with the mobile interface to provide seamless, real-time insights and recommendations.
 
-### 2. Primary Stressors
+Mood Mentor represents just the beginning of our vision for personalized health intelligence that empowers individuals to understand and improve their wellbeing through the power of autonomous AI agents.
 
-```
-- Excessive screen time (avg. 4.2 hours) is associated with bad days
-- Poor sleep quality (avg. 5.1/10) is associated with bad days
-- 'stress' mentioned in 7 journal entries
-```
-
-### 3. Personalized Recommendations
-
-```
-- Schedule 2-hour blocks of focused work with 15-minute screen breaks
-  Evidence: Regular breaks improve overall productivity and reduce eye strain
-  Potential Impact: Can improve productivity by 20% while reducing overall screen time
-
-- Establish a consistent sleep schedule, going to bed and waking up at the same time each day
-  Evidence: Research shows consistent sleep schedules help regulate circadian rhythm
-  Potential Impact: Could improve sleep quality by 15-20%
-  
-- Set a timer to stand up and walk for 5 minutes every hour
-  Evidence: Even short activity breaks can improve metabolism and energy levels
-  Potential Impact: Can add 1000-2000 steps to your daily count
-```
-
-## Customization and Extension
-
-### Adding New Data Sources
-
-To add a new data source:
-
-1. Modify the `HealthData` model to include the new data fields
-2. Update the data collection agent to process the new data
-3. Add pattern recognition for the new data in the pattern analysis agent
-
-### Adding New Recommendation Types
-
-To add new recommendation categories:
-
-1. Identify new stressor types in the `identify_stressors` function
-2. Add new recommendation templates in the `generate_recommendations` function
-
-### Deploying to Agentverse
-
-For a production deployment on fetch.ai's Agentverse:
-
-1. Register your agents on the fetch.ai Almanac
-2. Deploy them to the Agentverse platform
-3. Configure the appropriate permissions and endpoints
-
-## Production Deployment
-
-For a production deployment:
-
-1. Replace the mock data generation with real API integrations for wearables and apps
-2. Add proper authentication and user management
-3. Deploy the agents to fetch.ai's Agentverse for continuous operation
-4. Add a web or mobile UI for users to interact with the system
-5. Implement proper error handling and recovery mechanisms
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+## Built With
+- fetch.ai uAgents
+- Python
+- pandas
+- scikit-learn
