@@ -1,4 +1,3 @@
-// EntryDetailView.swift
 import SwiftUI
 
 struct EntryDetailView: View {
@@ -8,7 +7,8 @@ struct EntryDetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 15) {
+            VStack(alignment: .leading, spacing: 20) {
+                // Header with date and edit button
                 HStack {
                     Text(dateFormatter.string(from: entry.date))
                         .font(.headline)
@@ -22,56 +22,84 @@ struct EntryDetailView: View {
                 
                 Divider()
                 
-                VStack(alignment: .leading, spacing: 20) {
-                    // Mood section
-                    HStack {
+                // Mood and Energy section
+                HStack(spacing: 20) {
+                    // Mood card
+                    VStack {
                         Label("Mood", systemImage: "face.smiling")
                             .font(.headline)
-                        Spacer()
                         
                         Text("\(entry.mood)/10")
-                            .font(.title3)
+                            .font(.title)
                             .bold()
                             .foregroundColor(moodColor)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 5)
-                            .background(moodColor.opacity(0.2))
-                            .cornerRadius(8)
+                            .padding(.vertical, 8)
                     }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(moodColor.opacity(0.2))
+                    .cornerRadius(10)
                     
-                    // Health metrics section
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Health Data")
+                    // Energy card
+                    VStack {
+                        Label("Energy", systemImage: "bolt.fill")
                             .font(.headline)
                         
-                        Grid(alignment: .leading, horizontalSpacing: 30, verticalSpacing: 15) {
-                            GridRow {
-                                Label("\(entry.steps) steps", systemImage: "figure.walk")
-                                Label("\(entry.heartRate) bpm", systemImage: "heart")
-                            }
-                            
-                            GridRow {
-                                Label("\(entry.screenTimeMinutes) min screen", systemImage: "iphone")
-                                Label("\(entry.caloriesBurned) kcal", systemImage: "flame")
-                            }
-                            
-                            GridRow {
-                                Label("\(entry.sleepHours, specifier: "%.1f") hrs sleep", systemImage: "bed.double")
-                                Label("\(entry.waterIntake) ml water", systemImage: "drop")
-                            }
-                        }
+                        Text("\(entry.energy)/10")
+                            .font(.title)
+                            .bold()
+                            .foregroundColor(energyColor)
+                            .padding(.vertical, 8)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(energyColor.opacity(0.2))
+                    .cornerRadius(10)
+                }
+                
+                // Health data section
+                VStack(alignment: .leading, spacing: 15) {
+                    Text("Health Data")
+                        .font(.headline)
+                    
+                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 15) {
+                        HealthMetricView(icon: "figure.walk", value: "\(entry.steps)", label: "Steps")
+                        HealthMetricView(icon: "heart.fill", value: "\(entry.heartRate)", label: "BPM")
+                        HealthMetricView(icon: "iphone", value: "\(entry.screenTimeMinutes)", label: "Screen min")
+                        HealthMetricView(icon: "flame.fill", value: "\(entry.caloriesBurned)", label: "Calories")
+                        HealthMetricView(icon: "bed.double.fill", value: String(format: "%.1f", entry.sleepHours), label: "Sleep hrs")
+                        HealthMetricView(icon: "drop.fill", value: "\(entry.waterIntake)", label: "Water ml")
+                    }
+                }
+                .padding()
+                .background(Color(.systemGray6))
+                .cornerRadius(10)
+                
+                // Daily activities section
+                VStack(alignment: .leading, spacing: 10) {
+                    Label("Daily Activities", systemImage: "list.bullet")
+                        .font(.headline)
+                    
+                    Text(entry.dailyJournal)
                         .padding()
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .background(Color(.systemGray5))
                         .cornerRadius(8)
-                    }
+                }
+                .padding()
+                .background(Color(.systemGray6))
+                .cornerRadius(10)
+                
+                // Emotional state section
+                VStack(alignment: .leading, spacing: 10) {
+                    Label("Emotional State", systemImage: "heart.text.square")
+                        .font(.headline)
                     
-                    // Journal section
-                    VStack(alignment: .leading, spacing: 10) {
-                        Label("Journal Entry", systemImage: "book")
-                            .font(.headline)
-                        Text(entry.dailyJournal)
-                            .padding(.leading)
-                    }
+                    Text(entry.emotionalState)
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color(.systemGray5))
+                        .cornerRadius(8)
                 }
                 .padding()
                 .background(Color(.systemGray6))
@@ -106,38 +134,42 @@ struct EntryDetailView: View {
             return .gray
         }
     }
-}
-
-struct Grid<Content: View>: View {
-    let alignment: HorizontalAlignment
-    let horizontalSpacing: CGFloat
-    let verticalSpacing: CGFloat
-    let content: Content
     
-    init(alignment: HorizontalAlignment = .center, horizontalSpacing: CGFloat = 8, verticalSpacing: CGFloat = 8, @ViewBuilder content: () -> Content) {
-        self.alignment = alignment
-        self.horizontalSpacing = horizontalSpacing
-        self.verticalSpacing = verticalSpacing
-        self.content = content()
-    }
-    
-    var body: some View {
-        VStack(alignment: alignment, spacing: verticalSpacing) {
-            content
+    private var energyColor: Color {
+        switch entry.energy {
+        case 1...3:
+            return .red
+        case 4...6:
+            return .yellow
+        case 7...10:
+            return .green
+        default:
+            return .gray
         }
     }
 }
 
-struct GridRow<Content: View>: View {
-    let content: Content
-    
-    init(@ViewBuilder content: () -> Content) {
-        self.content = content()
-    }
+struct HealthMetricView: View {
+    let icon: String
+    let value: String
+    let label: String
     
     var body: some View {
-        HStack(spacing: 8) {
-            content
+        VStack {
+            Image(systemName: icon)
+                .font(.title2)
+                .foregroundColor(.blue)
+            
+            Text(value)
+                .font(.headline)
+            
+            Text(label)
+                .font(.caption)
+                .foregroundColor(.secondary)
         }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 10)
+        .background(Color(.systemGray5))
+        .cornerRadius(8)
     }
 }

@@ -1,47 +1,71 @@
-// Models.swift
 import Foundation
 
-struct WellbeingEntry: Identifiable, Codable {
+struct Stressor: Identifiable, Codable, Hashable {
     var id = UUID()
-    var date: Date
-    var mood: Int // 1-10 scale
-    var steps: Int
-    var screenTimeMinutes: Int
-    var sleepHours: Double
-    var heartRate: Int
-    var caloriesBurned: Int
-    var waterIntake: Int // in ml
-    var dailyJournal: String // Free response section for describing the day
+    var name: String
+    var level: Int // 1-10 scale
+    var description: String
+    var recommendations: [String]
     
-    static func mockData() -> [WellbeingEntry] {
-        let calendar = Calendar.current
-        var mockEntries: [WellbeingEntry] = []
-        
-        // Create entries for the past week
-        for i in 0..<7 {
-            let date = calendar.date(byAdding: .day, value: -i, to: Date()) ?? Date()
-            let entry = WellbeingEntry(
-                date: date,
-                mood: Int.random(in: 1...10),
-                steps: Int.random(in: 3000...15000),
-                screenTimeMinutes: Int.random(in: 60...360),
-                sleepHours: Double.random(in: 5.0...9.0).rounded(to: 1),
-                heartRate: Int.random(in: 60...100),
-                caloriesBurned: Int.random(in: 1500...3000),
-                waterIntake: Int.random(in: 1000...3000),
-                dailyJournal: "Today I felt pretty good. Went for a walk in the park and called my friend. Made dinner at home and watched a movie."
+    static func mockData() -> [Stressor] {
+        return [
+            Stressor(
+                name: "Work Pressure",
+                level: 8,
+                description: "Deadlines and work expectations are causing significant stress",
+                recommendations: [
+                    "Break large tasks into smaller, manageable chunks",
+                    "Practice time-blocking for focused work",
+                    "Take short breaks every 45-60 minutes",
+                    "Communicate with your manager about your workload"
+                ]
+            ),
+            Stressor(
+                name: "Sleep Issues",
+                level: 7,
+                description: "Difficulty falling asleep or staying asleep is affecting your energy levels",
+                recommendations: [
+                    "Establish a consistent sleep schedule",
+                    "Create a relaxing bedtime routine",
+                    "Limit screen time 1 hour before bed",
+                    "Keep your bedroom cool, dark, and quiet",
+                    "Consider meditation or gentle yoga before bed"
+                ]
+            ),
+            Stressor(
+                name: "Relationship Tension",
+                level: 5,
+                description: "Ongoing issues in personal relationships are causing emotional strain",
+                recommendations: [
+                    "Practice active listening",
+                    "Schedule quality time with loved ones",
+                    "Use I statements when discussing issues",
+                    "Consider seeking support from a relationship counselor"
+                ]
+            ),
+            Stressor(
+                name: "Financial Worry",
+                level: 6,
+                description: "Concerns about money and financial stability",
+                recommendations: [
+                    "Create or revisit your monthly budget",
+                    "Identify non-essential expenses that could be reduced",
+                    "Set up automated savings, even for small amounts",
+                    "Consider speaking with a financial advisor"
+                ]
+            ),
+            Stressor(
+                name: "Digital Overload",
+                level: 7,
+                description: "Constant connectivity and notifications are creating anxiety",
+                recommendations: [
+                    "Set specific times to check emails and social media",
+                    "Use 'Do Not Disturb' mode during focus time",
+                    "Delete unnecessary apps from your phone",
+                    "Try a digital detox for one day per week"
+                ]
             )
-            mockEntries.append(entry)
-        }
-        
-        return mockEntries
+        ]
     }
 }
 
-// Helper extension for rounding doubles
-extension Double {
-    func rounded(to places: Int) -> Double {
-        let divisor = pow(10.0, Double(places))
-        return (self * divisor).rounded() / divisor
-    }
-}

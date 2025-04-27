@@ -16,6 +16,10 @@
 		D57AC7C32DBDA2EE000D7A24 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57AC7C22DBDA2EE000D7A24 /* AddEntryView.swift */; };
 		D57AC7C52DBDA2EF000D7A24 /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57AC7C42DBDA2EF000D7A24 /* EditEntryView.swift */; };
 		D57AC7C92DBDA828000D7A24 /* HealthDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57AC7C82DBDA828000D7A24 /* HealthDataFetcher.swift */; };
+		D57AC7CD2DBDB0FD000D7A24 /* Stressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57AC7CC2DBDB0FD000D7A24 /* Stressor.swift */; };
+		D57AC7CF2DBDB402000D7A24 /* JournalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57AC7CE2DBDB402000D7A24 /* JournalListView.swift */; };
+		D57AC7D72DBDF832000D7A24 /* FetchAiServ.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57AC7D62DBDF832000D7A24 /* FetchAiServ.swift */; };
+		D57AC7DB2DBDFA99000D7A24 /* fetchaiStressors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57AC7DA2DBDFA99000D7A24 /* fetchaiStressors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,10 @@
 		D57AC7C22DBDA2EE000D7A24 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
 		D57AC7C42DBDA2EF000D7A24 /* EditEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntryView.swift; sourceTree = "<group>"; };
 		D57AC7C82DBDA828000D7A24 /* HealthDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataFetcher.swift; sourceTree = "<group>"; };
+		D57AC7CC2DBDB0FD000D7A24 /* Stressor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stressor.swift; sourceTree = "<group>"; };
+		D57AC7CE2DBDB402000D7A24 /* JournalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListView.swift; sourceTree = "<group>"; };
+		D57AC7D62DBDF832000D7A24 /* FetchAiServ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAiServ.swift; sourceTree = "<group>"; };
+		D57AC7DA2DBDFA99000D7A24 /* fetchaiStressors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fetchaiStressors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -121,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				D57AC7B72DBDA2A6000D7A24 /* Models.swift */,
+				D57AC7CC2DBDB0FD000D7A24 /* Stressor.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -130,6 +139,7 @@
 			children = (
 				D57AC7B92DBDA2BA000D7A24 /* WellbeingStore.swift */,
 				D57AC7C82DBDA828000D7A24 /* HealthDataFetcher.swift */,
+				D57AC7D62DBDF832000D7A24 /* FetchAiServ.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -147,9 +157,11 @@
 			isa = PBXGroup;
 			children = (
 				D57AC7C42DBDA2EF000D7A24 /* EditEntryView.swift */,
+				D57AC7CE2DBDB402000D7A24 /* JournalListView.swift */,
 				D57AC7C22DBDA2EE000D7A24 /* AddEntryView.swift */,
 				D57AC7C02DBDA2ED000D7A24 /* EntryDetailView.swift */,
 				D57AC7BE2DBDA2E7000D7A24 /* EntryRowView.swift */,
+				D57AC7DA2DBDFA99000D7A24 /* fetchaiStressors.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -304,10 +316,14 @@
 				D57AC7C92DBDA828000D7A24 /* HealthDataFetcher.swift in Sources */,
 				D57AC7BA2DBDA2BA000D7A24 /* WellbeingStore.swift in Sources */,
 				D57AC7C12DBDA2ED000D7A24 /* EntryDetailView.swift in Sources */,
+				D57AC7CF2DBDB402000D7A24 /* JournalListView.swift in Sources */,
 				D57AC7B62DBDA28F000D7A24 /* WellbeingApp.swift in Sources */,
 				D57AC7BC2DBDA2CF000D7A24 /* ContentView.swift in Sources */,
 				D57AC7B82DBDA2A6000D7A24 /* Models.swift in Sources */,
 				D57AC7C32DBDA2EE000D7A24 /* AddEntryView.swift in Sources */,
+				D57AC7D72DBDF832000D7A24 /* FetchAiServ.swift in Sources */,
+				D57AC7CD2DBDB0FD000D7A24 /* Stressor.swift in Sources */,
+				D57AC7DB2DBDFA99000D7A24 /* fetchaiStressors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,16 +1,5 @@
-// WellbeingAppWithFetchAi.swift
+// MainTabViewWithFetchAi.swift
 import SwiftUI
-
-@main
-struct WellbeingAppWithFetchAi: App {
-    var body: some Scene {
-        WindowGroup {
-            MainTabViewWithFetchAi()
-                .environmentObject(WellbeingStore())
-                .environmentObject(HealthDataFetcher())
-        }
-    }
-}
 
 struct MainTabViewWithFetchAi: View {
     @State private var selectedTab = 2 // Start with FetchAi Stressors tab
